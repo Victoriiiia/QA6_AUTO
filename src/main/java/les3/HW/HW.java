@@ -26,7 +26,7 @@ public class HW {
         driver.findElement(By.name("submit_search")).click();
         driver.findElement(By.linkText("Faded Short Sleeve T-shirts")).click();
         driver.findElement(By.name("Submit")).click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span")).click();
         driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a/span[1]")).click();
 
