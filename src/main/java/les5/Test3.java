@@ -1,5 +1,6 @@
 package les5;
 
+import driverFactory.DriverSetUp;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,14 +12,18 @@ import java.util.List;
 
 import static org.openqa.selenium.By.*;
 
-/*public class Test3 {
+/* На сайте http://ktokuda.net/ перейти на вкладку "Экскурсионные",
+     выбрать следующие страны Бельгия Германия Греция, также необходимо тменить выбор первого
+     элемента в списке, который выбирается автоматически.
+     Из транспорта выбрать Автобус, из городов отправления Киев и Львов.
+     Нажать кнопку "Найти".
+     */
+public class Test3 {
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary("C:\\Program Files\\chrome-win64\\chrome-win64\\chrome.exe");
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("http://www.automationpractice.pl/index.php?controller=contact");
+        WebDriver driver = DriverSetUp.setUpDriver();
+        driver.get("http://ktokuda.net/");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@href='javascript;']")).click();
         Select contact = new Select(driver.findElement(By.xpath("//*[@id=\"id_contact\"]")));
         Thread.sleep(1500);
         contact.selectByVisibleText("Customer service");
@@ -33,7 +38,7 @@ import static org.openqa.selenium.By.*;
         String one = driver.findElement(xpath("/html/body/div/div[2]/div/div[3]/div/div/p")).getText();
         int count = Integer.parseInt(one.split(" ")[2]);
         System.out.println(count);
-        driver.quit();*/
+        driver.quit();
         /*<label for="id_contact">Subject Heading</label>
                  id="uniform-id_contact"
                           <input class="form-control grey validate id="email"" +
@@ -64,7 +69,6 @@ import static org.openqa.selenium.By.*;
                 .moveToElement(driver.findElement(By.xpath("//*[@id=\"main-nav\"]/li[1]/div/div/ul/li[1]/a"))).pause(Duration.ofMillis(1500))
                 .moveToElement(driver.findElement(xpath("//*[@id=\"main-nav\"]/li[1]/div/div/ul/li[1]/div/a[1]/span")),604, 0).click().build().perform();
                 //.moveByOffset(302, 0).click().build().perform();
-        //System.out.println(driver.findElement(xpath("//*[@id=\"main-nav\"]/li[1]/div/div/ul/li[1]/div/a[1]/span")).getSize().width);
-
+        //System.out.println(driver.findElement(xpath("//*[@id=\"main-nav\"]/li[1]/div/div/ul/li[1]/div/a[1]/span")).getSize().width);*/
     }
-}*/
+}
