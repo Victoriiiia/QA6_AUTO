@@ -1,4 +1,4 @@
-package utils;
+package utilis;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,8 +29,19 @@ public class WaiterClass {
         wait.until(function);
     }
 
-    public WebElement waitForVisabilityOfWebElement(By locator){
+    public WebElement waitForVisabilityOfWebElementAndReturnElement(By locator){
         return fluentWait(EXPLICIT_WAIT).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForVisabilityOfWebElement(By locator){
+        waitForFunction(ExpectedConditions.visibilityOfElementLocated(locator), EXPLICIT_WAIT);
+    }
+    public void waitForIframeAndClickElementInside(By locator, By elementInside){
+        fluentWait(EXPLICIT_WAIT).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator))
+                .findElement(elementInside).click();
+    }
+    public Alert switchToAlert(){
+        return fluentWait(EXPLICIT_WAIT).until(ExpectedConditions.alertIsPresent());
     }
 
 }

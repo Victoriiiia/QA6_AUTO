@@ -26,9 +26,9 @@ public class HW3 {
         ChromeOptions options = new ChromeOptions();
         options.setBinary("C:\\Program Files\\chrome-win64\\chrome-win64\\chrome.exe");
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         driver.get("https://www.google.com/search");
         Thread.sleep(1000);
@@ -44,7 +44,7 @@ public class HW3 {
         System.out.println(driver.getCurrentUrl());
         Thread.sleep(1000);
         driver.get("https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit");
-        Thread.sleep(18000);
+        Thread.sleep(17000);
         driver.switchTo().frame("iframeResult");
         Thread.sleep(2000);
         driver.findElement(By.id("fname")).clear();
@@ -68,9 +68,9 @@ public class HW3 {
         driver.findElement(By.id("DateOfBirthYear")).sendKeys("1994");
         Select country = new Select(driver.findElement(By.id("Country")));
         country.selectByVisibleText("Ukraine");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         driver.findElement(By.xpath("//*[@id=\"State\"]")).sendKeys("Dnipro");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         driver.findElement(By.id("EmailAddress")).sendKeys("777belka555@rambler.ru");
         driver.findElement(By.id("ConfirmEmailAddress")).sendKeys("777belka555@rambler.ru");
         driver.findElement(By.id("Password")).sendKeys("123456");
@@ -84,20 +84,29 @@ public class HW3 {
                 break;
             }
         }
+        driver.get("https://www.hyrtutorials.com/p/alertsdemo.html");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"alertBox\"]")).click();
+        Thread.sleep(2000);
         Alert alert1 = driver.switchTo().alert();
-        alert1.dismiss();
-        /*System.out.println(alert2.getText());
+        System.out.println(alert1.getText());
+        alert1.accept();
+        System.out.println("Button 1: " + driver.findElement(By.xpath("//*[@id=\"output\"]")).getText());
+        driver.findElement(By.xpath("//*[@id=\"confirmBox\"]")).click();
+        Thread.sleep(2000);
+        Alert alert2 = driver.switchTo().alert();
+        System.out.println(alert2.getText());
         alert2.dismiss();
-        Thread.sleep(1000);
-        Alert alert1 = driver.switchTo().alert();
-        alert1.dismiss();*/
-
-
-
-
-
-
-
+        System.out.println("Button 2: " + driver.findElement(By.xpath("//*[@id=\"output\"]")).getText());
+        driver.findElement(By.xpath("//*[@id=\"promptBox\"]")).click();
+        Thread.sleep(2000);
+        Alert alert3 = driver.switchTo().alert();
+        System.out.println(alert3.getText());
+        Thread.sleep(2000);
+        alert3.sendKeys("Final step of this task");
+        Thread.sleep(2000);
+        alert3.accept();
+        System.out.println(driver.findElement(By.xpath("//*[@id=\"output\"]")).getText());
 
     }
 }

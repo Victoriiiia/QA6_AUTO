@@ -12,7 +12,8 @@ public class IframeEx {
         driver.get("https://demoqa.com/nestedframes");
         Thread.sleep(1500);
         driver.switchTo().frame("frame1");
-        System.out.println(driver.findElement(By.tagName("body")).getText());
+        driver.findElement(By.cssSelector("#dismiss-button > div > span")).click();
+        /*System.out.println(driver.findElement(By.tagName("body")).getText());
         WebElement childFrame = driver.findElement(By.xpath("//iframe[@srcdoc='<p>Child Iframe</p>']"));
         driver.switchTo().frame(childFrame);
         System.out.println(driver.findElement(By.tagName("p")).getText());
@@ -20,6 +21,6 @@ public class IframeEx {
         System.out.println(driver.findElement(By.tagName("body")).getText());
         driver.switchTo().defaultContent();
         System.out.println(driver.findElement(By.xpath("//*[text()='Forms']")).getText());
-        driver.quit();
+        driver.quit();*/
     }
 }
