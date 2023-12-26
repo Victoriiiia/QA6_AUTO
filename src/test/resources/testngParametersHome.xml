@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="AllTests Suite">
     <test name="AllTests">
-        <parameter name="search" value="машина"/>
+        <parameter name="search" value="dress"/>
                        <classes>
             <class name="QAHW_Testng.parameters.ParametersHWTask"/>
         </classes>

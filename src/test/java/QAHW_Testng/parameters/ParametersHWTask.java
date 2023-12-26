@@ -42,7 +42,7 @@ public class ParametersHWTask {
         Thread.sleep(3000);
         driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(ENTER);
         Thread.sleep(3000);
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText().contains("машина"));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText().contains(search));
         Thread.sleep(3000);
 
         /*actionsClass.sendKeys(By.xpath("//*[@id=\"search_query_top\"]"), search);
